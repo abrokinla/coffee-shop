@@ -40,7 +40,7 @@ def get_token_auth_header():
     elif len(parts) == 1:
         raise AuthError ({
             'code': 'invalid_header',
-            'description':'Token mot found'
+            'description':'Token not found'
         })
 
     elif len(parts) > 2:
@@ -133,8 +133,7 @@ def requires_auth(permission=''):
                     'code':'invalid_header',
                     'description': 'Unable to parse authentication token.'
                 }, 401)
-            res= check_permissions(permission, payload)
-            print(f'Permission checks: {res}')
+            res= check_permissions(permission, payload)            
             return f(payload, *args, **kwargs)
 
         return wrapper

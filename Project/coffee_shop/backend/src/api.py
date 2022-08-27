@@ -97,7 +97,7 @@ def update_drink(payload,drink_id):
 
         drink.update()
         return jsonify({
-            'succes': True,
+            'success': True,
             'drinks': [drink.long()]
         }, 200)
     except:
